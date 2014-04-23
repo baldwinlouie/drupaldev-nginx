@@ -1,7 +1,7 @@
 ---
 sites:
     vhosts:
-        example.drpual.dev:
+        example.drupal.dev:
             server_name: example.drupal.dev
             server_aliases:
                 - www.example.drupal.dev

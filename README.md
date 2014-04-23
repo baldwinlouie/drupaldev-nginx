@@ -22,6 +22,7 @@ Need Help? Consult the [wiki](https://github.com/mikebell/drupaldev-nginx/wiki) 
 * Vagrant - http://www.vagrantup.com/
 * VirtualBox - https://www.virtualbox.org/
 * Librarian Puppet - https://github.com/rodjek/librarian-puppet
+* Pupppet Gem - `gem install puppet`
 
 #Install
 
