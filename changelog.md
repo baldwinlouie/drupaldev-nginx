@@ -4,6 +4,13 @@ Changelog
 2.0.4 (2014-05-20)
 ------------------
 
+- Moved changelog file. [Mike Bell]
+
+- Merge branch 'master' of github.com:mikebell/drupaldev-nginx. [Mike
+  Bell]
+
+- Added changelog #62. [Mike Bell]
+
 - Merge branch 'dev' [Mike Bell]
 
 2.0.3 (2014-04-23)
