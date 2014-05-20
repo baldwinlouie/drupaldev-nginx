@@ -168,3 +168,24 @@ class { solr:
 class { 'automysqlbackup':
   backup_dir           => '/home/vagrant/db'
 }
+
+#Fix for php5sock not being writable
+file_line {'sock1':
+  path => '/etc/php5/fpm/pool.d/www.conf',
+  line => 'listen.owner = www-data',
+  ensure => present,
+  require => Package['php5-fpm'],
+}
+file_line {'sock2':
+  path => '/etc/php5/fpm/pool.d/www.conf',
+  line => 'listen.group = www-data',
+  ensure => present,
+  require => Package['php5-fpm'],
+}
+file_line {'sock3':
+  path => '/etc/php5/fpm/pool.d/www.conf',
+  line => 'listen.mode = 0660',
+  ensure => present,
+  notify => Service["php5-fpm"],
+  require => Package['php5-fpm'],
+}

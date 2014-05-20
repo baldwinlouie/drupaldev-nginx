@@ -11,3 +11,4 @@ server:
     - unzip
     - python-software-properties
     - vim
+    - screen
