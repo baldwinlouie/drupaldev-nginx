@@ -18,3 +18,5 @@ sites:
             user: example
             password: example
             sql_file: ''
+    solr:
+        - example
