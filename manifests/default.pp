@@ -93,9 +93,11 @@ if is_hash($site_values['databases']) and count($site_values['databases']) > 0 {
   create_resources(mysql_db, $site_values['databases'])
 }
 
-if count($site_values['solr']) > 0 {
-  class { solr:
-    cores => $site_values['solr'],
+if ($site_values['solr'] != undef) {
+  if count($site_values['solr']) > 0 {
+    class { solr:
+      cores => $site_values['solr'],
+    }
   }
 }
 
