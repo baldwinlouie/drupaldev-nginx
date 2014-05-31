@@ -7,12 +7,13 @@ Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Built in Dr
 Need Help? Consult the [wiki](https://github.com/mikebell/drupaldev-nginx/wiki) first before submitting an issue.
 
 #Tools
-2. Easier handling of vhosts and dbs (see example.pp)
+2. Easier handling of vhosts and dbs (see example.yaml)
 3. Drush
 4. Compass
 6. APC / Memcache
 7. Mailcatcher - Can be accessed by appending :1080 to any vagrant url
 8. XHProf
+9. Solr
 
 #Dependencies
 * Xcode with Command Line Tools installed
