@@ -1,24 +1,36 @@
+# Make sure puppet group exists
 group { 'puppet': ensure => present }
+
+# Add following directories to users path
 Exec { path => [ '/bin/', '/sbin/', '/usr/bin/', '/usr/sbin/' ] }
 
+# Set server variables from yaml file
 $server_values = hiera('server', false)
 
+# Ensure packages defined in common.yaml are installed
 ensure_packages( $server_values['packages'] )
 
+# Don't run apt-get update
 class {'apt':
   always_apt_update => false,
 }
 
+# Add PPA for PHP 5.3
 apt::ppa { 'ppa:ondrej/php5-oldstable': }
 
+# Install RVM
 class { 'rvm': version => '1.25.7' }
 
+# Make sure RVMs system user is vagrant
 rvm::system_user { vagrant: }
 
+# Install nginx
 class { 'nginx': }
 
+# Get all configuration info from nginx.yaml
 $nginx = hiera('nginx', false)
 
+# Install PHP with custom settings
 class { 'php':
   package             => 'php5-fpm',
   service             => 'php5-fpm',
@@ -28,6 +40,7 @@ class { 'php':
   require             => Class["apt"],
 }
 
+# Install php modules defined in nginx.yaml
 php::module {
   [
     $nginx['phpmodules']
@@ -35,6 +48,7 @@ php::module {
   notify  => Service["php5-fpm"]
 }
 
+# Make sure php5-fpm is always running
 service { 'php5-fpm':
   ensure     => running,
   enable     => true,
@@ -43,44 +57,54 @@ service { 'php5-fpm':
   require    => Package['php5-fpm'],
 }
 
+# Install PHP Devel package
 class { 'php::devel':
   require => Class['php'],
 }
 
+# Install PHP Pear
 class { 'php::pear':
   require => Class['php'],
 }
 
+# Install xdebug
 class { 'xdebug':
   service => 'nginx',
 }
 
+# Install composer
 class { 'composer':
   require => Package['php5-fpm', 'curl'],
 }
 
+# Install mysql server and set root password
 class { '::mysql::server':
   root_password => 'drupaldev'
 }
 
+# Install specific version of drush
 php::pear::module { 'drush-6.2.0.0':
   repository  => 'pear.drush.org',
   use_package => 'no',
 }
 
+# Install Pear package console table
 php::pear::module { 'Console_Table':
   use_package => 'no',
 }
 
+# Set php ini values from nginx.yaml
 php::ini { 'php.ini':
   value => $nginx['phpini'],
   require => Package["php5-cli"]
 }
 
+# Install mailcatcher
 class { 'mailcatcher': }
 
 #class { 'xhprof': }
 
+# Build site values for provision of site specific things
 if $site_values == undef {
   $site_values = hiera('sites', false)
 }
@@ -101,6 +125,7 @@ if ($site_values['solr'] != undef) {
   }
 }
 
+# Template for installing a nginx vhost
 define nginx_vhost (
   $server_name,
   $server_aliases = [],
@@ -149,6 +174,7 @@ define nginx_vhost (
   }
 }
 
+# Template for instaling a mysql db
 define mysql_db (
   $user,
   $password,
@@ -169,6 +195,7 @@ define mysql_db (
   }
 }
 
+# Install automysqlbackup and set default folder
 class { 'automysqlbackup':
   backup_dir           => '/home/vagrant/db'
 }
