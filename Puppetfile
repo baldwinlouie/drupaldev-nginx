@@ -10,8 +10,8 @@ mod "maestrodev/rvm", "1.5.5"
 mod "jfryman/nginx", "0.0.9"
 
 mod "mikebell/mailcatcher",
-  :git => "git://github.com/mikebell/puppet-mailcatcher"
-  :ref => "01fa518c2e4fe4f17afe18d63507df2ee198b673"
+  :git => "git://github.com/mikebell/puppet-mailcatcher",
+  :ref => "1.0.0"
 
 mod "mikebell/xhprof",
   :git => "git://github.com/mikebell/puppet-xhprof",
