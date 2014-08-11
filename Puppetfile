@@ -25,7 +25,7 @@ mod "example42/php",
   :git => "git://github.com/example42/puppet-php",
   :ref => "v2.0.17"
 
-mod "eample42/puppi",
+mod "example42/puppi",
   :git => "git://github.com/example42/puppi",
   :ref => "v2.1.7"
 
