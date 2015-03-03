@@ -4,7 +4,7 @@ This is a fork that works with Ubuntu 14.04 and the updated Php5.5 packages.  __
 
 [Support Mike Bell on Gittip](https://www.gittip.com/mikebell/)
 
-Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Drush installed via [Drush] (https://github.com/baldwinlouie/puppet-drush).  This can be configured to install any version of Drush using composer and Drush's git repository.
+Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Drush installed using [Puppet-Drush module] (https://github.com/baldwinlouie/puppet-drush).  This can be configured to install any version of Drush using composer and Drush's git repository.
 
 Need Help? Consult the [wiki](https://github.com/mikebell/drupaldev-nginx/wiki) first before submitting an issue.
 
