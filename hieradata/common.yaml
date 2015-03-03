@@ -5,7 +5,6 @@ server:
     - build-essential
     - curl
     - wget
-    - zsh
     - htop
     - unzip
     - python-software-properties

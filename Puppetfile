@@ -9,13 +9,6 @@ mod "maestrodev/rvm", "1.5.5"
 
 mod "jfryman/nginx", "0.0.9"
 
-mod "mikebell/mailcatcher",
-  :git => "git://github.com/mikebell/puppet-mailcatcher",
-  :ref => "1.0.0"
-
-mod "mikebell/xhprof",
-  :git => "git://github.com/mikebell/puppet-xhprof",
-  :ref => "1.0"
 
 mod "puphpet/xdebug",
   :git => "git://github.com/puphpet/puphpet-xdebug.git",
@@ -23,7 +16,7 @@ mod "puphpet/xdebug",
 
 mod "example42/php",
   :git => "git://github.com/example42/puppet-php",
-  :ref => "v2.0.17"
+  :ref => "v2.0.19"
 
 mod "example42/puppi",
   :git => "git://github.com/example42/puppi",
@@ -33,17 +26,12 @@ mod "tPl0ch/composer",
   :git => "git://github.com/tPl0ch/puppet-composer",
   :ref => "1.2.1"
 
-mod "logstash/logstash",
-  :git => "git://github.com/logstash/puppet-logstash",
-  :ref => "0.3.4"
-
 mod "puppetlabs/concat",
   :git => "git://github.com/puppetlabs/puppetlabs-concat",
   :ref => "1.1.0-rc1"
 
-mod "mikebell/solr",
-  :git => "git://github.com/mikebell/puppet-solr",
-  :ref => "9bd83e19149ed01e8b064c9dee8a074049adb84e"
+mod "puphpet/puppet-drush",
+  :git => "git://github.com/baldwinlouie/puppet-drush"
 
 mod "nextrevision/automysqlbackup",
   :git => "git://github.com/nextrevision/puppet-automysqlbackup",

@@ -1,3 +1,4 @@
+
 # Make sure puppet group exists
 group { 'puppet': ensure => present }
 
@@ -14,9 +15,6 @@ ensure_packages( $server_values['packages'] )
 class {'apt':
   always_apt_update => false,
 }
-
-# Add PPA for PHP 5.3
-#apt::ppa { 'ppa:ondrej/php5-oldstable': }
 
 # Install RVM
 class { 'rvm': version => '1.25.7' }
@@ -73,18 +71,19 @@ class { 'xdebug':
 }
 
 # Install composer
-class { 'composer':
-  require => Package['php5-fpm', 'curl'],
-}
+#class { 'composer':
+#  require => Package['php5-fpm', 'curl'],
+#}
 
 # Install mysql server and set root password
 class { '::mysql::server':
   root_password => 'drupaldev'
 }
 
-# install latest drush
-class {'drush':
-  ensure => latest,
+# install latest drush, which installs composer. Not the best
+class {'drush::git::drush':
+  git_tag => '6.5.0',
+  update     => true,
 }
 
 # Install Pear package console table
@@ -95,13 +94,10 @@ php::pear::module { 'Console_Table':
 # Set php ini values from nginx.yaml
 php::ini { 'php.ini':
   value => $nginx['phpini'],
-  config_dir => "/etc/php5/fpm",
+  config_dir => '/etc/php5',
+  sapi_target => 'fpm',
   require => Package["php5-fpm"]
 }
-
-# Install mailcatcher
-
-#class { 'xhprof': }
 
 file { "/tmp/php": ensure => "directory"}
 
@@ -117,14 +113,6 @@ if count($site_values['vhosts']) > 0 {
 if is_hash($site_values['databases']) and count($site_values['databases']) > 0 {
   create_resources(mysql_db, $site_values['databases'])
 }
-
-#if ($site_values['solr'] != undef) {
-#  if count($site_values['solr']) > 0 {
-#    class { solr:
-#      cores => $site_values['solr'],
-#    }
-#  }
-#}
 
 # Template for installing a nginx vhost
 define nginx_vhost (
