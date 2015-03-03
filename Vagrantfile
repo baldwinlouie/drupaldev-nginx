@@ -12,8 +12,7 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--memory", 2048]
   end
 
-  # config.vm.synced_folder "./sites", "/var/www", type: "smb"
-  config.vm.synced_folder "./sites", "/var/www", :nfs => true
+  config.vm.synced_folder "./sites", "/var/www", :nfs => true, :map_uid => 0, :map_guid => 0
   config.vm.provision :shell, :inline => "sudo apt-get update"
   config.vm.provision :shell, :path => "upgrade_puppet.sh"
 
