@@ -1,5 +1,7 @@
 #DrupalDev nginx
 
+This is a fork that works with Ubuntu 14.04 and the updated Php5.5 packages.
+
 [Support on Gittip](https://www.gittip.com/mikebell/)
 
 Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Built in Drush and Composer.
