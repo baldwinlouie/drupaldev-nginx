@@ -1,21 +1,16 @@
 #DrupalDev nginx
 
-This is a fork that works with Ubuntu 14.04 and the updated Php5.5 packages.
+This is a fork that works with Ubuntu 14.04 and the updated Php5.5 packages.  __This fork is more stripped down than the original.__  I've removed things like Solr, XPROF to get it working.  Will enhance in the future.
 
-[Support on Gittip](https://www.gittip.com/mikebell/)
+[Support Mike Bell on Gittip](https://www.gittip.com/mikebell/)
 
-Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Built in Drush and Composer.
+Vagrant configuration for Drupal Development. Supports Drupal 6/7/8. Drush installed via [Drush] (https://github.com/baldwinlouie/puppet-drush).  This can be configured to install any version of Drush using composer and Drush's git repository.
 
 Need Help? Consult the [wiki](https://github.com/mikebell/drupaldev-nginx/wiki) first before submitting an issue.
 
 #Tools
-2. Easier handling of vhosts and dbs (see example.yaml)
-3. Drush
-4. Compass
-6. APC / Memcache
-7. Mailcatcher - Can be accessed by appending :1080 to any vagrant url
-8. XHProf
-9. Solr
+1. Easier handling of vhosts and dbs (see example.yaml)
+2. Drush
 
 #Dependencies
 * Xcode with Command Line Tools installed
@@ -35,13 +30,7 @@ Need Help? Consult the [wiki](https://github.com/mikebell/drupaldev-nginx/wiki) 
 6. `vagrant up`
 
 #VM Info
-* Default IP 33.33.33.10
-* Sites built as *.drupal.dev (use dnsmasq)
-* Ubuntu 12.04
+* Default IP 192.168.99.10, but this can be changed in Vagrantfile
+* Sites built as *.drupal.dev (use dnsmasq).
+* Ubuntu 14.04, Php 5.5.
 * Mysql root password: drupaldev
-* For Windows users on Vagrant 1.5.0+ uncomment line 15 in Vagrantfile to use SMB sharing.
-
-#XHProf Details
-* Visible at xhprof.drupal.dev
-* XHProf Directory - `/usr/share/php`
-* XHProf URL - `http://xhprof.drupal.dev`
