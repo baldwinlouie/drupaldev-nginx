@@ -5,19 +5,14 @@ nginx:
     - php5-cli
     - php5-curl
     - php5-intl
-    - php5-mcrypt
     - php5-gd
-    - php-apc
-    - php5-memcached
   phpini:
     - display_errors = On
     - error_reporting = -1
-    - date.timezone = "Europe/London"
-    - sendmail_path = "/opt/vagrant_ruby/bin/catchmail"
+    - date.timezone = "America/Los_Angeles"
     - xdebug.default_enable = 1
     - xdebug.remote_autostart = 0
     - xdebug.remote_connect_back = 1
     - xdebug.remote_enable = 1
     - xdebug.remote_handler = "dbgp"
     - xdebug.remote_port = 9000
-    - apc.shm_size = 128M

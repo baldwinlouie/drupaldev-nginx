@@ -1,10 +1,10 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "precise64"
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  config.vm.box = "ubuntu-14.04-amd64-vbox.box"
+  config.vm.box_url = "https://oss-binaries.phusionpassenger.com/vagrant/boxes/latest/ubuntu-14.04-amd64-vbox.box"
 
-  config.vm.hostname = "drupal.dev"
+  config.vm.hostname = "ubuntu14.dev"
 
-  config.vm.network :private_network, ip: "33.33.33.10"
+  config.vm.network :private_network, ip: "192.168.99.10"
     config.ssh.forward_agent = true
 
   config.vm.provider :virtualbox do |v|

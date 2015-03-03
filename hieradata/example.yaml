@@ -2,10 +2,10 @@
 sites:
     vhosts:
         example.drupal.dev:
-            server_name: example.drupal.dev
+            server_name: leadtail.drupal.dev
             server_aliases:
-                - www.example.drupal.dev
-            www_root: /var/www/example.drupal.dev
+                - www.leadtail.drupal.dev
+            www_root: /var/www/leadtail.drupal.dev
             listen_port: '80'
             index_files:
                 - index.php

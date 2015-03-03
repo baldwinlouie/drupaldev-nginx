@@ -16,7 +16,7 @@ class {'apt':
 }
 
 # Add PPA for PHP 5.3
-apt::ppa { 'ppa:ondrej/php5-oldstable': }
+#apt::ppa { 'ppa:ondrej/php5-oldstable': }
 
 # Install RVM
 class { 'rvm': version => '1.25.7' }
@@ -82,10 +82,9 @@ class { '::mysql::server':
   root_password => 'drupaldev'
 }
 
-# Install specific version of drush
-php::pear::module { 'drush-6.2.0.0':
-  repository  => 'pear.drush.org',
-  use_package => 'no',
+# install latest drush
+class {'drush':
+  ensure => latest,
 }
 
 # Install Pear package console table
@@ -96,13 +95,15 @@ php::pear::module { 'Console_Table':
 # Set php ini values from nginx.yaml
 php::ini { 'php.ini':
   value => $nginx['phpini'],
-  require => Package["php5-cli"]
+  config_dir => "/etc/php5/fpm",
+  require => Package["php5-fpm"]
 }
 
 # Install mailcatcher
-class { 'mailcatcher': }
 
 #class { 'xhprof': }
+
+file { "/tmp/php": ensure => "directory"}
 
 # Build site values for provision of site specific things
 if $site_values == undef {
@@ -117,13 +118,13 @@ if is_hash($site_values['databases']) and count($site_values['databases']) > 0 {
   create_resources(mysql_db, $site_values['databases'])
 }
 
-if ($site_values['solr'] != undef) {
-  if count($site_values['solr']) > 0 {
-    class { solr:
-      cores => $site_values['solr'],
-    }
-  }
-}
+#if ($site_values['solr'] != undef) {
+#  if count($site_values['solr']) > 0 {
+#    class { solr:
+#      cores => $site_values['solr'],
+#    }
+#  }
+#}
 
 # Template for installing a nginx vhost
 define nginx_vhost (

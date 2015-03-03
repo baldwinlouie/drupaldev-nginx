@@ -7,8 +7,6 @@ server:
     - wget
     - zsh
     - htop
-    - memcached
     - unzip
     - python-software-properties
     - vim
-    - screen
