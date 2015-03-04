@@ -75,6 +75,9 @@ class { 'xdebug':
 #  require => Package['php5-fpm', 'curl'],
 #}
 
+#Install mailcatcher
+class { 'mailcatcher': }
+
 # Install mysql server and set root password
 class { '::mysql::server':
   root_password => 'drupaldev'
@@ -153,7 +156,8 @@ define nginx_vhost (
       'fastcgi_param  '           => 'SCRIPT_FILENAME $document_root$fastcgi_script_name',
       'fastcgi_pass'            => 'unix:/var/run/php5-fpm.sock',
       'fastcgi_index'           => 'index.php',
-      'include'                 => 'fastcgi_params'
+      'include'                 => 'fastcgi_params',
+      'fastcgi_read_timeout'    => '900',
     },
     notify              => Class['nginx::service'],
   }

@@ -7,9 +7,14 @@ nginx:
     - php5-intl
     - php5-gd
   phpini:
+    - sendmail_path = "/usr/local/bin/catchmail"
     - display_errors = On
     - error_reporting = -1
     - date.timezone = "America/Los_Angeles"
+    - max_execution_time = 360
+    - memory_limit = 256M
+    - post_max_size = 32M
+    - upload_max_filesize = 32M
     - xdebug.default_enable = 1
     - xdebug.remote_autostart = 0
     - xdebug.remote_connect_back = 1

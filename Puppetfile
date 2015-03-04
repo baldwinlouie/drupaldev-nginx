@@ -36,3 +36,7 @@ mod "puphpet/puppet-drush",
 mod "nextrevision/automysqlbackup",
   :git => "git://github.com/nextrevision/puppet-automysqlbackup",
   :ref => "752b8b9d95725112e97b5b3faa15ac369399c4b0"
+
+mod "mikebell/mailcatcher",
+  :git => "git://github.com/mikebell/puppet-mailcatcher",
+  :ref => "1.0.0"
