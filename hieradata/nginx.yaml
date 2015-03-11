@@ -21,3 +21,9 @@ nginx:
     - xdebug.remote_enable = 1
     - xdebug.remote_handler = "dbgp"
     - xdebug.remote_port = 9000
+    - opcache.revalidate_freq=0
+    - opcache.max_accelerated_files=7963
+    - opcache.memory_consumption=128
+    - opcache.interned_strings_buffer=16
+    - opcache.fast_shutdown=1
+
